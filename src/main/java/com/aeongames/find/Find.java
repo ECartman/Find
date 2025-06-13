@@ -50,20 +50,21 @@ public class Find {
     }
 
     /**
-     * this is the base entry point of this API. this function will seek the
-     * Provided path and recourse all sub-folders and seek all files that
-     * matches All the rules.
+     * API entry point
+     * Finds the Files on a given Path. with the provided rules. 
+     * and return a list of path that matches the criteria provided. 
+     * by default the search is recursive. 
      *
      * @param basePath the base path (a folder) to start the look from.
-     * @param rules
-     * @return
+     * @param rules the rules to apply on our search for files or directories.
+     * @return a list of Path that matches the criteria of the given rules. 
      */
     public static List<Path> find(Path basePath, List<Rule> rules) {
         if (Objects.isNull(basePath) || !Files.exists(basePath) || !Files.isReadable(basePath)) {
             return List.of();
         }
         //use an anonimous Instance of Rule Executor to process the files and Check the file rules
-        RuleExecutor executor = CreateRuleExecutor(rules);
+        RuleExecutor executor = new RuleExecutor(rules);
         List<Path> results = null;
         try {
             results = executor.ExecuteRule(basePath, true);
@@ -120,18 +121,5 @@ public class Find {
         if (rule != null) {
             rules.add(rule);
         }
-    }
-
-    private static RuleExecutor CreateRuleExecutor(final List<Rule> rules) {
-        return (pathToFile) -> {
-            //this is the definition on a lambda of the function MatchRule. 
-            //on this case MatchRule looks and check that the pathToFile matches all the rules.
-            for (Rule rule : rules) {
-                if (!rule.MatchRule(pathToFile)) {
-                    return false;
-                }
-            }
-            return true;
-        };
     }
 }
