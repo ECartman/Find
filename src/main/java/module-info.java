@@ -13,7 +13,8 @@
 
 /**
  * this defines a Module-Info for this application package. 
- * given this is NOT a library we will ONLY export the UI Frame class. 
+ * we only export Find as this library is intended to consume only the API's
+ * available on this package. the other code is available. for usage by the library itself.
  */
 module com.aeongames.find {
     requires java.base;
