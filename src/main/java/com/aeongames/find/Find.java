@@ -34,12 +34,12 @@ import java.util.logging.Logger;
 public class Find {
     /*
     example params: 
-    "C:\Users\cartman\OneDrive\CHFI" -type f -size 1mb -ext jpg
+    "C:\Users\cartman\OneDrive\book" -type f -size 1mb -ext jpg
     output: 
     --- exec:3.1.0:exec (default-cli) @ Find ---
-    File Size 1.25 MB C:\Users\cartman\OneDrive\CHFI\CHFI book\0.00.jpg
-    File Size 1.58 MB C:\Users\cartman\OneDrive\CHFI\CHFI book\0.01.jpg
-    File Size 1.00 MB C:\Users\cartman\OneDrive\CHFI\CHFI book\0.02.jpg
+    File Size 1.25 MB C:\Users\cartman\OneDrive\book\0.00.jpg
+    File Size 1.58 MB C:\Users\cartman\OneDrive\book\0.01.jpg
+    File Size 1.00 MB C:\Users\cartman\OneDrive\book\0.02.jpg
     */
     public static void main(String[] args) throws IOException {
         LinkedList<Rule> rules = new LinkedList<>();
